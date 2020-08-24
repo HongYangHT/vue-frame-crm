@@ -416,7 +416,7 @@
                     </div>
                     <!-- EIP 集成导航栏和菜单栏 -->
                     <div class="bg-white pt-10"  v-if="showMenuHead === '4' && !isIframe">
-                        <div class="customer-tt-title pl-10">
+                        <div class="customer-tt-title pl-10" v-show="!($route.query.Sys === 'feishuEip')">
                             <span class="eipBread" v-if="mpType === '1' || mpType === '10'">
                                 {{lang === 'EN' ? staffMpMenu.mpNamecn : staffMpMenu.mpNameus}}
                             </span>
@@ -777,6 +777,11 @@
               return
             }
              this.staffMpMenuName = this.lang === 'EN' ? this.staffMpMenu.mpNamecn : this.staffMpMenu.mpNameus
+             console.log('staffMpMenu.mpNamecn:  '+ this.staffMpMenuName)
+            console.log('window.document.title' + this.staffMpMenuName);
+            if(this.$route.query.Sys === 'feishuEip'){
+              window.document.title =this.staffMpMenuName;
+            }
           },
           lang(newVal,oldVal){
             let sessionMpMenuName  = sessionStorage.getItem('staffMpMenuName');
@@ -960,6 +965,9 @@
             }
             if(this.mpId && this.mpId !== '' && url.indexOf('mpId') === -1 && this.$route.query.mpId){
               url = url + "&mpId=" + this.mpId
+            }
+            if (url.indexOf('Sys=') === -1 && (this.$route.query.Sys === 'feishuEip')){
+              url = url + "&Sys=feishuEip"
             }
             let routePath = this.$route.matched[0].path
             let showType = this.$route.query.showType;
