@@ -439,7 +439,7 @@
     .layout-logo-min-min{
         display: none;
     }
-   
+
     .layout-sidebar--folded .layout-logo-min-img {
         display: block;
         width: 100%;
@@ -475,7 +475,7 @@
     .layout-logo-min-min{
         display: block;
     }
-   
+
 }
 
 @media (max-width: 576px) {
@@ -703,6 +703,34 @@
 .customer-tt-title .eipBread{
     font-size: 16px;
 }
+.customer-aa-table{
+    width: 100%;
+    display: inline-block;
+    background: #F5F6F8 ;
+    padding: 2px 0;
+}
+.customer-aa-table ul{
+    float:left;
+    width:100%;
+}
+
+.customer-aa-table ul li{
+    float:left;
+    color: #737373;
+}
+.customer-aa-table ul li a{
+    display: inline-block;
+    cursor: pointer;
+    padding:0 0 0 15px;
+    height:30px;
+    line-height: 30px;
+    color: #737373 ;
+    font-size:13px;
+    border-radius:5px;
+}
+.customer-aa-table ul .z-crttab{
+    color:#0085D0 !important;
+}
 
 
 .customer-tt-table{
@@ -710,7 +738,6 @@
     display: inline-block;
     padding:10px 15px 0px 15px;
     background:#E5F1FE;
-
 }
 .customer-tt-table ul{
     float:left;

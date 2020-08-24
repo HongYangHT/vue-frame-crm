@@ -414,9 +414,22 @@
                             </div>
                         </div>
                     </div>
+                    <!-- EIP 飞书集成导航栏和菜单栏 -->
+                    <div class="bg-white pt-10"  v-if="showMenuHead === '4' && !isIframe && $route.query.Sys === 'feishuEip'">
+                        <div :class="{'customer-aa-table':true}" v-if="mpType === '1'">
+                            <ul class="menu" >
+                                <li v-for="(staffMenu, index) in mpTreeData" @click="changeStaffMpMenu(staffMenu.systemUrl,staffMenu.menuUrl)" >
+                                    <a  :key="index" >
+                                        <span :class="{'z-crttab':staffMenu.menuUrl === staffMpMenuUrl}"> {{lang === 'EN'? staffMenu.menuName !== null && staffMenu.menuName !== '' ? staffMenu.menuName : staffMenu.menuEnName  : staffMenu.menuEnName}}</span>
+                                        &nbsp&nbsp <span v-if="index <= mpTreeData.length - 2"> / </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                     <!-- EIP 集成导航栏和菜单栏 -->
-                    <div class="bg-white pt-10"  v-if="showMenuHead === '4' && !isIframe">
-                        <div class="customer-tt-title pl-10" v-show="!($route.query.Sys === 'feishuEip')">
+                    <div class="bg-white pt-10"  v-if="showMenuHead === '4' && !isIframe && $route.query.Sys != 'feishuEip'">
+                        <div class="customer-tt-title pl-10">
                             <span class="eipBread" v-if="mpType === '1' || mpType === '10'">
                                 {{lang === 'EN' ? staffMpMenu.mpNamecn : staffMpMenu.mpNameus}}
                             </span>
@@ -780,7 +793,12 @@
              console.log('staffMpMenu.mpNamecn:  '+ this.staffMpMenuName)
             console.log('window.document.title' + this.staffMpMenuName);
             if(this.$route.query.Sys === 'feishuEip'){
-              window.document.title =this.staffMpMenuName;
+              let menuList = this.staffMpMenuName.split(">");
+              if(menuList && menuList.length >0){
+                window.document.title = menuList[menuList.length-1].trim();
+              }else{
+                window.document.title = this.staffMpMenuName;
+              }
             }
           },
           lang(newVal,oldVal){
