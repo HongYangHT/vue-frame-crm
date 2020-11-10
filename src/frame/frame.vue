@@ -381,13 +381,13 @@
                     </div>
                 </div>
             </div>
-            <div :class="[{'layout-main': showMenuHead !== '4'},{'showMoreNav': (showMenuHead === '4' || showMenuHead === '5') }]">
+            <div :class="[{'layout-main': showMenuHead !== '4'},{'hidenNavTop': showMenuHead === '5'},{'showMoreNav': ( showMenuHead === '4' ||showMenuHead === '8') }]">
                 <div class="layout-main--content">
                     <!--
                         showMenuHead: 4  EIP集成隐藏菜单 头部信息
                                       5  隐藏菜单栏 头部信息
                     -->
-                    <div class="bread-crumbs cmi-bread-crumbs-wrap" v-if="breadcrumbArr && showMenuHead !== '4' && showMenuHead !== '5'">
+                    <div class="bread-crumbs cmi-bread-crumbs-wrap" v-if="breadcrumbArr && showMenuHead !== '4' && showMenuHead !== '5' && showMenuHead !== '8'">
                         <div class="row ml-0 mr-0">
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 pl-0">
                                 <div class="breadcrumbs">
@@ -450,7 +450,7 @@
                         </div>
                     </div>
                     <div class="crm-wrapper" style="padding: 0 10px 15px!important;" ref="musterMenuListId" v-if="mpType === '2' && translateMusterMenuList && translateMusterMenuList.length
-                            && (showMenuHead === '1' || showMenuHead === '4' || showMenuHead === '2' || showMenuHead === '3' || showMenuHead === '5')">
+                            && (showMenuHead === '1' || showMenuHead === '4' || showMenuHead === '2' || showMenuHead === '3' || showMenuHead === '5' || showMenuHead === '8')">
                         <div class="customer-tt-table-low"
                              v-if="mpType === '2' && translateMusterMenuList && translateMusterMenuList.length">
                             <ul class="menu_eip">
@@ -497,7 +497,7 @@
                     </div>
                     <router-view v-if="!isIframeContent" class="pt-10"></router-view>
                     <iframe v-if="isIframeContent" class="pt-10" :width="clientWidth" height="1000" :src="iframeUrl" frameborder="0"></iframe>
-                    <div class="pager-footer" v-if="showMenuHead !== '4' && showMenuHead !== '5'">
+                    <div class="pager-footer" v-if="showMenuHead !== '4' && showMenuHead !== '5'  && showMenuHead !== '8'">
                     <p>{{pagerFooter}}</p>
                     </div>
                 </div>
@@ -765,7 +765,7 @@
                 let menuId = this.$route.query.menuId
                 this.staffMpMenu.menulist = this.translateMpMenuMap[menuId ]
               }
-            } else if(to.query.showMenuHead && (to.query.showMenuHead === '4' || to.query.showMenuHead === '5')){
+            } else if(to.query.showMenuHead && (to.query.showMenuHead === '4' || to.query.showMenuHead === '5' || to.query.showMenuHead === '8')){
               this.getStaffMpMenue()
             }
             if (this.mpType === '2'){
