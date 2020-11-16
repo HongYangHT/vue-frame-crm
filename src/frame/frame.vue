@@ -450,7 +450,7 @@
                         </div>
                     </div>
                     <div class="crm-wrapper" style="padding: 0 10px 15px!important;" ref="musterMenuListId" v-if="mpType === '2' && translateMusterMenuList && translateMusterMenuList.length
-                            && (showMenuHead === '1' || showMenuHead === '4' || showMenuHead === '2' || showMenuHead === '3' || showMenuHead === '5' || showMenuHead === '8')">
+                            && (showMenuHead === '1' || showMenuHead === '4' || showMenuHead === '2' || showMenuHead === '3' || showMenuHead === '8')">
                         <div class="customer-tt-table-low"
                              v-if="mpType === '2' && translateMusterMenuList && translateMusterMenuList.length">
                             <ul class="menu_eip">
