@@ -756,6 +756,10 @@
             this.staffMpMenu.menulist = []
             console.log('watch  $route: showMenuHead: ' + to.query.showMenuHead )
             console.log('watch $route: mpType: ' + this.mpType)
+            console.log('watch  $route: showMenuHead: ' + to.query.sys )
+            if(to.query.sys && to.query.sys === 'fs'){
+              window.document.domain = "tstad.local"
+            }
             if (this.mpType && this.mpType === '2' && (!to.query.showMenuHead ||to.query.showMenuHead !== '4')) {
               //解析菜单对应的MENU信息
               let frameBaseInfo = JSON.parse(sessionStorage.getItem('frame-base-info'))
