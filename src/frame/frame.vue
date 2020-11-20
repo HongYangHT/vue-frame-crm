@@ -756,10 +756,7 @@
             this.staffMpMenu.menulist = []
             console.log('watch  $route: showMenuHead: ' + to.query.showMenuHead )
             console.log('watch $route: mpType: ' + this.mpType)
-            console.log('watch  $route: Sys: ' + to.query.Sys )
-            if(to.query.Sys && (to.query.Sys === 'fs' || to.query.open === 'fs')){
-              window.document.domain = "tstad.local"
-            }
+
             if (this.mpType && this.mpType === '2' && (!to.query.showMenuHead ||to.query.showMenuHead !== '4')) {
               //解析菜单对应的MENU信息
               let frameBaseInfo = JSON.parse(sessionStorage.getItem('frame-base-info'))
@@ -1530,6 +1527,10 @@
             this.mpType = this.$route.query.mpType
           } else {
             this.mpType = '1'
+          }
+          console.log('this.$route.query.Sys:  ' + this.$route.query.Sys  + this.$route.query.open)
+          if(this.$route.query.Sys && (this.$route.query.Sys === 'fs' || this.$route.query.open === 'fs')){
+            window.document.domain = "tstad.local"
           }
 
             // let path = getQuery('path')
